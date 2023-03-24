@@ -19,13 +19,13 @@ AopLog
 - 只需通过`@AopLog`注解(或者自定义切面)决定是否埋点收集。
 ### 快速开始
 
-#### 项目通过[Maven仓库地址](https://mvnrepository.com/artifact/com.github.ealenxie/aop-log/2.5) 的pom.xml引入。
+#### 项目通过[Maven仓库地址](https://mvnrepository.com/artifact/io.github.herbertgao/aop-log-dubbo/2.5) 的pom.xml引入。
 
 ```xml
 
 <dependency>
-    <groupId>com.github.ealenxie</groupId>
-    <artifactId>aop-log</artifactId>
+    <groupId>io.github.herbertgao</groupId>
+    <artifactId>aop-log-dubbo</artifactId>
     <version>2.5</version>
 </dependency>
 
@@ -34,7 +34,7 @@ AopLog
 #### 或者通过gradle引入
 
 ```gradle
-compile group: 'com.github.ealenxie', name: 'aop-log', version: '2.5'
+compile group: 'io.github.herbertgao', name: 'aop-log-dubbo', version: '2.5'
 ```
 
 #### @AopLog注解使用，进行埋点收集
@@ -236,4 +236,4 @@ public class CustomLogDataAspect {
 
 #### Change Notes:
 
-有关更改的详细信息，请参阅[发布说明](https://github.com/EalenXie/aop-log/releases)。
+有关更改的详细信息，请参阅[发布说明](https://github.com/EalenXie/aop-log-dubbo/releases)。
