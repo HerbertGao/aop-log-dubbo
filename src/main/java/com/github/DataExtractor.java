@@ -1,5 +1,6 @@
 package com.github;
 
+import org.apache.dubbo.rpc.RpcContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
@@ -38,7 +39,16 @@ public class DataExtractor {
      */
     public static HttpServletRequest getRequest() {
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-        return attributes != null ? attributes.getRequest() : null;
+        if (attributes != null) {
+            return attributes.getRequest();
+        }
+
+        // Dubbo在jetty下通过RestEasy请求的时候，通过RpcContext上下文获得请求
+        // 参考: https://cn.dubbo.apache.org/zh-cn/overview/mannual/java-sdk/reference-manual/protocol/rest/
+        if (RpcContext.getServiceContext().getRequest() != null) {
+            return RpcContext.getServiceContext().getRequest(HttpServletRequest.class);
+        }
+        return null;
     }
 
     /**
@@ -48,7 +58,16 @@ public class DataExtractor {
      */
     public static HttpServletResponse getResponse() {
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-        return attributes != null ? attributes.getResponse() : null;
+        if (attributes != null) {
+            return attributes.getResponse();
+        }
+
+        // Dubbo在jetty下通过RestEasy请求的时候，通过RpcContext上下文获得请求
+        // 参考: https://cn.dubbo.apache.org/zh-cn/overview/mannual/java-sdk/reference-manual/protocol/rest/
+        if (RpcContext.getServiceContext().getResponse() != null) {
+            return RpcContext.getServiceContext().getResponse(HttpServletResponse.class);
+        }
+        return null;
     }
 
     /**

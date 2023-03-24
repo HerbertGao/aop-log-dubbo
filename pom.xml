@@ -32,6 +32,7 @@
     <properties>
         <spring-boot-starter-web.version>2.6.2</spring-boot-starter-web.version>
         <aspectjweaver.version>1.9.7</aspectjweaver.version>
+        <dubbo.version>3.1.8</dubbo.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <dependencies>
@@ -44,6 +45,11 @@
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
             <version>${aspectjweaver.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo-rpc-api</artifactId>
+            <version>${dubbo.version}</version>
         </dependency>
     </dependencies>
     <distributionManagement>
